@@ -1,0 +1,16 @@
+.container {
+    height: 800px;
+    width: 800px;
+    border: solid red;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+
+.grid {
+    height: 48px;
+    width: 48px;
+    border: solid grey 1px;
+    
+}
