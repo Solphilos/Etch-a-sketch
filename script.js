@@ -1,10 +1,18 @@
 // creates a given number of divs and appends them to the parent div class 'container'. Adds id to each, in ascending numerical order
 makeDivsGrid = (divNum) => {
-    for ( let i = 1; i < divNum; i++) {
+        let numbAtSides = divNum * divNum + 1;
+        let divHeight = 736 / divNum - 2;
+    for ( let i = 1; i < numbAtSides; i++) {
         const container = document.querySelector('.container');
         const div = document.createElement('div');
         container.appendChild(div);
-        div.setAttribute('id', 'grid' + i);  
+        div.setAttribute('id', 'grid' + i); 
+        div.classList.add('boxes') 
+        div.style.height = `${divHeight}px`;  // find out why these variables as values don't work!!!!   
+        div.style.width = `${divHeight}px`;
+        div.style.border = '1px solid #0000FF';
+        
+        
     }
     addListen();
 }
@@ -32,9 +40,18 @@ function getIdName() {
 
 function calcGrid(numPerSide) {
     let divHeight = 736 / numPerSide
+    let items = document.querySelectorAll('div');
+    let array = Array.from(items);
+    array.forEach()
+} 
+   
+function styleDiv() {
     
-    //use divHeight value to set width and height of divs
 }
+
+    
+    //use divHeight value to set width and height of divs ( if divHeight = 10, then divs will be 10px by 10px)
+
   
 
 
@@ -53,4 +70,4 @@ function clearGrid() {
 
 
 
-makeDivsGrid(257);
+makeDivsGrid(60);
