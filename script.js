@@ -2,19 +2,18 @@
 makeDivsGrid = (divNum) => {
         let numbAtSides = divNum * divNum + 1;
         let divHeight = 736 / divNum - 2;
-    for ( let i = 1; i < numbAtSides; i++) {
+      
+     for ( let i = 1; i < numbAtSides; i++) {
         const container = document.querySelector('.container');
         const div = document.createElement('div');
         container.appendChild(div);
         div.setAttribute('id', 'grid' + i); 
-        div.classList.add('boxes') 
-        div.style.height = `${divHeight}px`;  // find out why these variables as values don't work!!!!   
+        div.style.height = `${divHeight}px`;     
         div.style.width = `${divHeight}px`;
         div.style.border = '1px solid #0000FF';
-        
-        
-    }
+       }
     addListen();
+    
 }
      
    
@@ -27,47 +26,53 @@ function addListen() {
 function getIdName() {
      let name = document.querySelectorAll(':hover')
      let array = Array.from(name);
-     let idName = array.pop();
+     let idName = array.pop()
      idName.classList.add('active');
      document.querySelector('.container').classList.remove('active');
 
 }
 
-// make new function that clears grid and creates a prompt asking user for new grid dimensions (how many per side, not changing container size)
 
-
-// takes user input number and uses it to find dimensions that will be applied to the divs in new grid so they conform to dimensions of parent container
-
-function calcGrid(numPerSide) {
-    let divHeight = 736 / numPerSide
-    let items = document.querySelectorAll('div');
-    let array = Array.from(items);
-    array.forEach()
-} 
-   
-function styleDiv() {
+function newGrid() {
+    let answer = prompt('Enter number of rows per side')     // find out why this makes a new grid instead of replacing the old one
+    if (answer < 100) {
+        makeDivsGtrid(answer);
+    }
+   else if (answer >= 100) {
+       alert('Please enter a number less than 99')
+   }
     
 }
+//////erase all below this
 
-    
-    //use divHeight value to set width and height of divs ( if divHeight = 10, then divs will be 10px by 10px)
-
-  
-
-
-
-
-
-
-
-function clearGrid() {
-
+function addListen2() {
+    document.querySelector('.container').addEventListener('mouseover', erase);
 }
 
 
 
 
 
+function erase() {
+    let name = document.querySelectorAll(':hover')
+     let array = Array.from(name);
+     let idName = array.pop()
+     idName.classList.remove('active');
+     document.querySelector('.container').removeEventListener('mouseover', getIdName)
+     addListen2()
+}
 
 
-makeDivsGrid(60);
+
+
+
+
+
+
+
+makeDivsGrid(16);
+
+
+
+
+

@@ -5,15 +5,15 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    
 }
 
-
-div {
-    height: 44px;
-    width: 44px;
-    border: solid grey 1px;
-    
+.containerTwo {
+    margin: auto;
+    height: 736px;
+    width: 736px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
 
@@ -21,3 +21,6 @@ div {
     background-color: rgb(0, 255, 0);
 }
 
+.erased {
+    background-color: white;
+}
