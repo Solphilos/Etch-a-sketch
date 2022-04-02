@@ -36,20 +36,21 @@ function getIdName() {
 function newGrid() {
     let answer = prompt('Enter number of rows per side')     // find out why this makes a new grid instead of replacing the old one
     if (answer < 100) {
-        makeDivsGtrid(answer);
+        makeDivsGrid(answer);
     }
    else if (answer >= 100) {
        alert('Please enter a number less than 99')
    }
-    
+   document.querySelector('.container').removeEventListener('mouseover', erase);
 }
-//////erase all below this
+
+
+
+
 
 function addListen2() {
     document.querySelector('.container').addEventListener('mouseover', erase);
 }
-
-
 
 
 
