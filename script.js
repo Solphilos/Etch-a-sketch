@@ -34,6 +34,7 @@ function getIdName() {
 
 
 function newGrid() {
+    replaceGrid();
     let answer = prompt('Enter number of rows per side')     // find out why this makes a new grid instead of replacing the old one
     if (answer < 100) {
         makeDivsGrid(answer);
@@ -54,7 +55,7 @@ function addListen2() {
 
 
 
-function erase() {
+function erase() {                                     // mouseover event removes event listener responsible for adding "active" class to div elements
     let name = document.querySelectorAll(':hover')
      let array = Array.from(name);
      let idName = array.pop()
@@ -66,13 +67,26 @@ function erase() {
 
 
 
+function clearGrid() {
+   let name = document.querySelectorAll('div.container div')  // returns divs inside div class container, loops through each removing "active" class
+   for (let i = 0; i < name.length; i++) {
+    name[i].classList.remove('active');
+   }
+}
 
 
 
+
+
+function replaceGrid(){
+    let name = document.querySelectorAll('div.container div')  // returns divs inside div class container, loops through each....
+    for (let i = 0; i < name.length; i++) {
+        name[i].remove();
+ }
+}
 
 
 makeDivsGrid(16);
-
 
 
 
