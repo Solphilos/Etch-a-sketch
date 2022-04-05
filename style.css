@@ -29,6 +29,8 @@
     
 }
 
+
+
 button:hover {
     background-color: rgb(255, 255, 255);
 }
@@ -37,6 +39,7 @@ button:active {
     background-color: rgb(216, 216, 216);
     transform: translateY(4px);
 }
+
 
 
 #draw {
@@ -60,7 +63,7 @@ button:active {
 
 #erase {
     border: gray 1px;
-    border-style: inset;
+    border-style: outset;
     height: fit-content;
     width: 120px;
     font-size: 22px;
@@ -69,7 +72,7 @@ button:active {
 
 #clearGrid {
     border: gray 1px;
-    border-style: inset;
+    border-style: outset;
     height: fit-content;
     width: 120px;
     font-size: 22px;
@@ -79,7 +82,7 @@ button:active {
 
 #randomColor {
     border: gray 1px;
-    border-style: inset;
+    border-style: outset;
     height: fit-content;
     width: 120px;
     font-size: 22px;
