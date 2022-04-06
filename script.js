@@ -34,8 +34,10 @@ function getIdName() {
  let name = document.querySelectorAll(':hover')
  let array = Array.from(name);
  let idName = array.pop()
- idName.classList.add('active');
- document.querySelector('.container').classList.remove('active');
+ //idName.classList.add('active');
+ idName.style.backgroundColor = "lime"
+ //document.querySelector('.container').classList.remove('active');
+ document.querySelector('.container').style.backgroundColor = "white";
  
 
 }
@@ -45,18 +47,20 @@ function getIdName() {
 function newGrid() {
     replaceGrid();
     document.querySelector('.container').removeEventListener('mouseover', randomColor);
-    let answer = prompt('Enter number of rows per side')    
-        if (answer < 100 && answer > 0) {
+       window.answer = prompt('Enter number of rows per side') 
+           
+        if (window.answer < 100 && answer > 0) {
             makeDivsGrid(answer);
          }
-        else if (answer >= 100) {
+        else if (window.answer >= 100) {
             alert('Please enter a number less than 99')
         }
-        else if (answer < 1) {
+        else if (window.answer < 1) {
             makeDivsGrid(16);
         }
-            
         
+       
+       
         document.querySelector('.container').removeEventListener('mouseover', erase);
 }
 
@@ -70,6 +74,7 @@ function erase() {
     idName.classList.remove('active');
     document.querySelector('.container').removeEventListener('mouseover', getIdName)
     addListen2()
+    idName.style.backgroundColor = "white"
     
 }
 
@@ -80,9 +85,16 @@ function clearGrid() {
     document.querySelector('.container').removeEventListener('mouseover', randomColor);
     let name = document.querySelectorAll('div.container div')  // returns divs inside div class container, loops through each removing "active" class
     for (let i = 0; i < name.length; i++) {
-    name[i].classList.remove('active');
+   /// name[i].classList.remove('active');
 
-}
+    name[i].remove();
+    }
+     if (window.answer > 0){
+      makeDivsGrid(window.answer)
+    }
+    else {
+        makeDivsGrid(16)
+    }
 }
 
 
@@ -105,6 +117,7 @@ draw = () => {
 
 function randomColor() {   
     document.querySelector('.container').removeEventListener('mouseover', getIdName)
+    document.querySelector('.container').removeEventListener('mouseover', erase)
     addListen3()
     const array = [];                 
      for (let i = 0; i < 3; i++) {
@@ -117,7 +130,7 @@ function randomColor() {
     let t = anotherArray.pop();
     t.style.backgroundColor = `rgb(${string})`;   
     document.querySelector('.container').style.backgroundColor = "white";
-
+    document.getElementById('randomColor').style.backgroundColor = "white";
 
      
 }
