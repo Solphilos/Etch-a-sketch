@@ -1,25 +1,43 @@
 
 
+
 // creates a given number of divs and appends them to the parent div class 'container'. Adds id to each, in ascending numerical order
 makeDivsGrid = (divNum) => {
-    let numbAtSides = divNum * divNum + 1;
-    let divHeight = 736 / divNum - 2;
-  for ( let i = 1; i < numbAtSides; i++) {
-    const container = document.querySelector('.container');
-    const div = document.createElement('div');
-    container.appendChild(div);
-    div.setAttribute('id', 'grid' + i); 
-    div.style.height = `${divHeight}px`;     
-    div.style.width = `${divHeight}px`;
-    div.style.border = '1px solid grey';
-    container.style.border = '2px solid grey'
-   }
-addListen();
-
+   let numbAtSides = divNum * divNum + 1;
+   let divHeight = 736 / divNum - 2;
+    for ( let i = 1; i < numbAtSides; i++) {
+      const container = document.querySelector('.container');
+      const div = document.createElement('div');
+      container.appendChild(div);
+      div.setAttribute('id', 'grid' + i); 
+      div.style.height = `${divHeight}px`;     
+      div.style.width = `${divHeight}px`;
+      div.style.border = 'none';
+      container.style.border = '2px solid grey';
+      div.style.padding = '2px';
+    }
+    newListen();
+    
 }
- 
-addListen = () => document.querySelector('.container').addEventListener('mouseover', getIdName);
 
+
+const mouseDown = () => {
+   addListen()
+}
+
+const makeUp = () => { 
+    document.querySelector('.container').removeEventListener('mouseover', getIdName);
+}
+
+
+const newListen = () => {
+    document.querySelector('.container').addEventListener('mousedown', mouseDown);
+    document.querySelector('.container').addEventListener('mouseup', makeUp);
+}
+
+const addListen = () => { 
+    document.querySelector('.container').addEventListener('mouseover', getIdName);
+} 
 
 addListen2 = () => document.querySelector('.container').addEventListener('mouseover', erase);
 
@@ -28,9 +46,10 @@ addListen3 = () => document.querySelector('.container').addEventListener('mouseo
 
 
 
+
 // when mouse pointer enters element: get nodelist, convert nodelist to array, select last item in array and use to add new class to that element. 
 
-function getIdName() {
+getIdName = () => {
  let name = document.querySelectorAll(':hover')
  let array = Array.from(name);
  let idName = array.pop()
@@ -44,7 +63,7 @@ function getIdName() {
 
 
 
-function newGrid() {
+ newGrid = () => {
     replaceGrid();
     document.querySelector('.container').removeEventListener('mouseover', randomColor);
        window.answer = prompt('Enter number of rows per side') 
@@ -66,7 +85,7 @@ function newGrid() {
 
 
 
-function erase() {  
+ erase = () => {  
     document.querySelector('.container').removeEventListener('mouseover', randomColor);  // mouseover event removes event listener responsible for adding "active" class to div elements
     let name = document.querySelectorAll(':hover')
     let array = Array.from(name);
@@ -81,41 +100,39 @@ function erase() {
 
 
 
-function clearGrid() {
+clearGrid = () => {
     document.querySelector('.container').removeEventListener('mouseover', randomColor);
-    let name = document.querySelectorAll('div.container div')  // returns divs inside div class container, loops through each removing "active" class
+    let name = document.querySelectorAll('div.container div');  // returns divs inside div class container, loops through each removing "active" class
     for (let i = 0; i < name.length; i++) {
-   /// name[i].classList.remove('active');
-
-    name[i].remove();
+        name[i].remove();
     }
-     if (window.answer > 0){
-      makeDivsGrid(window.answer)
+    if (window.answer > 0){
+        makeDivsGrid(window.answer);
     }
     else {
-        makeDivsGrid(16)
+        makeDivsGrid(16);
     }
 }
 
 
-function replaceGrid(){
+replaceGrid = () => {
     let name = document.querySelectorAll('div.container div')  // returns divs inside div class container, loops through each and removes them
     for (let i = 0; i < name.length; i++) {
-    name[i].remove();
-}
+        name[i].remove();
+    }
 }
 
 
 draw = () => {
     document.querySelector('.container').removeEventListener('mouseover', erase);
-     addListen();
+    newListen();
 }
 
 
 
 // generate random number between 0-255, three times. Place the three returned values into an array and assign as color values
 
-function randomColor() {   
+  randomColor = () => {   
     document.querySelector('.container').removeEventListener('mouseover', getIdName)
     document.querySelector('.container').removeEventListener('mouseover', erase)
     addListen3()
@@ -134,10 +151,6 @@ function randomColor() {
 
      
 }
-
-
-
-
 
 
 
